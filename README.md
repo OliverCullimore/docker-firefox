@@ -553,11 +553,6 @@ If Firefox is crashing frequently, make sure that:
 [seccomp profile]: https://docs.docker.com/engine/security/seccomp/
 [latest official seccomp profile]: https://github.com/moby/moby/blob/master/profiles/seccomp/default.json
 
-## Support or Contact
+## Credit
 
-Having troubles with the container or have questions?  Please
-[create a new issue].
-
-For other great Dockerized applications, see https://jlesage.github.io/docker-apps.
-
-[create a new issue]: https://github.com/jlesage/docker-firefox/issues
+https://github.com/jlesage/docker-firefox

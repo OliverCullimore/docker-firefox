@@ -1,0 +1,25 @@
+# JetBrains IDE
+.idea/*
+.run/*
+
+# Exclude config & other files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+config.json
+.DS_Store
+
+# GoLang binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# GoLang test binary, build with `go test -c`
+*.test
+
+# GoLang output of the go coverage tool, specifically when used with LiteIDE
+*.out

@@ -1,7 +1,9 @@
 #
-# firefox Dockerfile
+# Firefox Dockerfile
 #
-# https://github.com/jlesage/docker-firefox
+# https://github.com/OliverCullimore/docker-firefox
+#
+# Credit: https://github.com/jlesage/docker-firefox
 #
 
 # Build the membarrier check tool.
@@ -159,6 +161,15 @@ RUN \
 COPY rootfs/ /
 COPY --from=0 /tmp/membarrier_check /usr/bin/
 
+# Adjust the noVNC interface.
+RUN \
+    # Hide navbar.
+    sed-patch 's/<nav class="navbar navbar-default navbar-fixed-top">/<nav class="navbar navbar-default navbar-fixed-top hidden">/' \
+        /opt/novnc/index.vnc && \
+    # Remove canvas margin.
+    sed-patch 's/<canvas id="rfbScreen" class="center-block" style="margin-top:51px;">/<canvas id="rfbScreen" class="center-block" style="margin-top:0;">/' \
+        /opt/novnc/index.vnc
+
 # Set environment variables.
 ENV APP_NAME="Firefox"
 
@@ -167,8 +178,8 @@ VOLUME ["/config"]
 
 # Metadata.
 LABEL \
-      org.label-schema.name="firefox" \
+      org.label-schema.name="docker-firefox" \
       org.label-schema.description="Docker container for Firefox" \
       org.label-schema.version="$DOCKER_IMAGE_VERSION" \
-      org.label-schema.vcs-url="https://github.com/jlesage/docker-firefox" \
+      org.label-schema.vcs-url="https://github.com/OliverCullimore/docker-firefox" \
       org.label-schema.schema-version="1.0"
